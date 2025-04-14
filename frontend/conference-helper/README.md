@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Conference Helper
+#### Video Demo:  <URL HERE>
+#### Description:
+Conference Helper is an application for planners to track statistics of their conferences. It generates analytics based on past conference performances and you can create new conferences and see old ones.
 
 ## Getting Started
 
