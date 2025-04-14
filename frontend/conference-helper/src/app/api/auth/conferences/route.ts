@@ -108,40 +108,84 @@ export async function GET(request: NextRequest) {
 }
 
 // POST handler to create a new conference
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    
-    // Validate required fields
-    const requiredFields = ['name', 'startDate', 'endDate', 'location', 'category'];
-    for (const field of requiredFields) {
-      if (!body[field]) {
-        return NextResponse.json(
-          { error: `Missing required field: ${field}` },
-          { status: 400 }
-        );
-      }
-    }
-    
-    // Create new conference (in a real app, you would save to a database)
-    const newConference = {
-      id: conferences.length + 1,
-      ...body,
-      attendees: 0,
-      image: body.image || '/images/default-conference.jpg',
-      status: 'upcoming',
-      featured: body.featured || false,
-      tags: body.tags || []
-    };
-    
-    // In a real application, you would add to database here
-    conferences.push(newConference as any);
-    
-    return NextResponse.json({ conference: newConference }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Invalid request body' },
-      { status: 400 }
-    );
-  }
-}
+export async function POST(request: NextRequest) {  
+  try {  
+    const body = await request.json();  
+  
+    // Validate required fields  
+    const requiredFields = ['name', 'startDate', 'endDate', 'maxPresentations', 'maxAttendees', 'price'];  
+    for (const field of requiredFields) {  
+      if (body[field] === undefined) {  
+        return NextResponse.json(  
+          { error: `Missing required field: ${field}` },  
+          { status: 400 }  
+        );  
+      }  
+    }  
+  
+    // Create new conference  
+    const newConference = {  
+      id: conferences.length + 1,  
+      ...body,  
+      attendees: 0,  
+      image: body.image || '/images/default-conference.jpg',  
+      status: 'upcoming',  
+      featured: body.featured || false,  
+      tags: body.tags || [],  
+    };  
+  
+    // Add to database here (e.g., save to your database)  
+    conferences.push(newConference as any);  
+  
+    return NextResponse.json({ conference: newConference }, { status: 201 });  
+  } catch (error) {  
+    console.error('Error processing request:', error);  
+    return NextResponse.json(  
+      { error: 'Invalid request body' },  
+      { status: 400 }  
+    );  
+  }  
+}  
+  
+export async function PUT(request: NextRequest) {  
+  try {  
+    const body = await request.json();  
+    const { id } = request.params;  
+  
+    // Validate required fields  
+    const requiredFields = ['name', 'startDate', 'endDate', 'maxPresentations', 'maxAttendees', 'price'];  
+    for (const field of requiredFields) {  
+      if (body[field] === undefined) {  
+        return NextResponse.json(  
+          { error: `Missing required field: ${field}` },  
+          { status: 400 }  
+        );  
+      }  
+    }  
+  
+    // Update the existing conference  
+    const conferenceIndex = conferences.findIndex((c) => c.id === parseInt(id));  
+    if (conferenceIndex === -1) {  
+      return NextResponse.json(  
+        { error: 'Conference not found' },  
+        { status: 404 }  
+      );  
+    }  
+  
+    const updatedConference = {  
+      ...conferences[conferenceIndex],  
+      ...body,  
+      updatedAt: new Date().toISOString(),  
+    };  
+  
+    conferences[conferenceIndex] = updatedConference;  
+  
+    return NextResponse.json({ conference: updatedConference }, { status: 200 });  
+  } catch (error) {  
+    console.error('Error processing request:', error);  
+    return NextResponse.json(  
+      { error: 'Invalid request body' },  
+      { status: 400 }  
+    );  
+  }  
+}  

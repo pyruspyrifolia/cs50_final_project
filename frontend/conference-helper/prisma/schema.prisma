@@ -37,12 +37,11 @@ model Conference {
   ends        DateTime
   maxPresentations Int
   maxAttendees Int
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
   locationId  String
   location    Location  @relation(fields: [locationId], references: [id])
   userId      String
   user        User      @relation(fields: [userId], references: [id])
+  price Int
   presentations Presentation[]
   attendees   Attendee[]
 }

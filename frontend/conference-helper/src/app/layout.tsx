@@ -9,7 +9,7 @@ import AuthProvider from '@/lib/AuthProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Conference-Go',
+  title: 'Conference-Tracker',
   description: 'Conference Management Application',
 };
 

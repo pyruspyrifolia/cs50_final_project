@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="text-xl font-bold text-blue-600">
-                Conference-Go
+                Conference-Tracker
               </Link>
             </div>
             <nav className="ml-6 flex space-x-8">

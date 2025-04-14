@@ -44,7 +44,7 @@ export default function ConferencesPage() {
         if (categoryFilter) params.append('category', categoryFilter);
         if (statusFilter) params.append('status', statusFilter);
         
-        const response = await fetch(`/api/conferences?${params.toString()}`);
+        const response = await fetch(`/api/auth/conferences?${params.toString()}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch conferences');
@@ -258,14 +258,11 @@ export default function ConferencesPage() {
                       </div>
                     </div>
                     
-                    <div className="mt-6 flex items-center justify-between">
+                    {/* <div className="mt-6 flex items-center justify-between">
                       <Link href={`/conferences/${conference.id}`} className="text-indigo-600 hover:text-indigo-800 font-medium">
-                        View Details
+                        Edit
                       </Link>
-                      <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                        Register Now
-                      </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
