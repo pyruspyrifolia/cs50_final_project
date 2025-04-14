@@ -95,9 +95,8 @@ const Dashboard: React.FC = () => {
           </nav>
         </div>
 
-        {/* Main Content */}
+        
         <div className="flex-1">
-          {/* Top Navigation */}
           <header className="bg-white shadow-sm">
             <div className="flex items-center justify-between p-4">
               <h1 className="text-2xl font-semibold">Dashboard</h1>
@@ -106,11 +105,11 @@ const Dashboard: React.FC = () => {
             </div>
           </header>
 
-          {/* Dashboard Content */}
+          
           <main className="p-6">
             {activeTab === 'overview' && (
               <>
-                {/* Stats Cards */}
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                   <div className="bg-white rounded-xl shadow-md p-6 flex items-center">
                     <div className="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
@@ -189,7 +188,6 @@ const Dashboard: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {/* Conference Categories */}
                   <div className="bg-white rounded-xl shadow-md p-6">
                     <h2 className="text-lg font-semibold mb-4">Conference Categories</h2>
                     <div className="h-64">
@@ -215,7 +213,6 @@ const Dashboard: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Upcoming Conferences */}
                   <div className="bg-white rounded-xl shadow-md p-6 col-span-1 lg:col-span-2">
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-lg font-semibold">Upcoming Conferences</h2>
